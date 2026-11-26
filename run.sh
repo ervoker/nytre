@@ -6,7 +6,7 @@ set -e
 python3 -m pip install --user udocker
 export PATH="$HOME/.local/bin:$PATH"
 udocker --version
-IMAGE="ubuntu:24.04"
+IMAGE="ubuntu:26.10"
 CONTAINER="ubuntu-auto"
 
 echo "[1] Checking udocker..."
